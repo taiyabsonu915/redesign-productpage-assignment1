@@ -1,27 +1,16 @@
-import { BrowserRouter } from 'react-router-dom'
-import Theme from '@/components/template/Theme'
-import Layout from '@/components/layouts'
-import { AuthProvider } from '@/auth'
-import Views from '@/views'
-import appConfig from './configs/app.config'
-import './locales'
-
-if (appConfig.enableMock) {
-    import('./mock')
-}
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './views/Home';
+import Contact from './views/Contact';
 
 function App() {
-    return (
-        <Theme>
-            <BrowserRouter>
-                <AuthProvider>
-                    <Layout>
-                        <Views />
-                    </Layout>
-                </AuthProvider>
-            </BrowserRouter>
-        </Theme>
-    )
+  return (
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
